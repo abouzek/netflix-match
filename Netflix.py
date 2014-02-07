@@ -30,7 +30,7 @@ def netflix_solve(r, w, user_avg_file, movie_avg_file, probe_ratings_file):
 			if ':' not in line:
 				a.append(float(line))
 
-	netflix_print(w, "\nRMSE:" + str(rmse(a, p)))
+	netflix_print(w, "\nRMSE:" + str(netflix_rmse(a, p)))
 
 def netflix_eval(user_avgs, movie_avgs, movie_id, customer_id):
 	user_avg = user_avgs[str(customer_id)]
@@ -41,7 +41,7 @@ def netflix_eval(user_avgs, movie_avgs, movie_id, customer_id):
 def netflix_print(w, num):
 	w.write(str(num) + "\n")
 
-def rmse(a, p) :
+def netflix_rmse(a, p) :
     """
     O(1) in space
     O(n) in time
