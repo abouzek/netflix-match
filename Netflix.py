@@ -1,35 +1,42 @@
 #!/usr/bin/env python3
 
-import math
+import math, json
 
-def netflix_solve(r, w):
+def netflix_load_cache(user_avg_file, movie_avg_file):
+	with open(user_avg_file) as ua, open (movie_avg_file) as ma:
+		return json.load(ua), json.load(ma)
+
+def netflix_solve(r, w, user_avg_file, movie_avg_file, probe_ratings_file):
+	user_avgs, movie_avgs = netflix_load_cache(user_avg_file, movie_avg_file)
+
 	a = []
 	p = []
 	movie_id = 0
 	customer_id = 0
-	# G
+	# Make our predictions for customers
 	for line in r:
 		if ':' in line:
 			movie_id = int(line[:-2])
 			netflix_print(w, line[:-1])
 		else:
 			customer_id = int(line)
-			rating = netflix_eval(movie_id, customer_id)
+			rating = netflix_eval(user_avgs, movie_avgs, movie_id, customer_id)
 			p.append(rating)
 			netflix_print(w, rating)
 
 	# Gather Netflix predicted ratings for comparison
-	#probe_ratings = '/u/thunt/cs373-netflix-tests/irvin-probe_ratings.txt'
-	probe_ratings = './TestRatings.in'
-	with open(probe_ratings) as f:
+	with open(probe_ratings_file) as f:
 		for line in f:
 			if ':' not in line:
 				a.append(float(line))
 
-	netflix_print(w, "RMSE:" + str(rmse(a, p)))
+	netflix_print(w, "\nRMSE:" + str(rmse(a, p)))
 
-def netflix_eval(movie_id, customer_id):
-	return 3
+def netflix_eval(user_avgs, movie_avgs, movie_id, customer_id):
+	user_avg = user_avgs[str(customer_id)]
+	movie_avg = movie_avgs[str(movie_id)]
+	# Average of all ratings = 3.7
+	return (user_avg + movie_avg) / 2
 
 def netflix_print(w, num):
 	w.write(str(num) + "\n")
