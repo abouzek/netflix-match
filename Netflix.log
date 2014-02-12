@@ -1,0 +1,41 @@
+commit ecb390a8b63152b8fcfed64080378c88e192647d
+Author: abouzek <alan.bouzek@gmail.com>
+Date:   Wed Feb 12 14:28:23 2014 -0600
+
+    add unit tests and output, change netflix_solve to hard-load cache
+
+commit efc0a414a4190b5afbfe226374590f7520bf3b85
+Author: abouzek <alan.bouzek@gmail.com>
+Date:   Wed Feb 12 13:34:22 2014 -0600
+
+    implementation small and working with dictionary
+
+commit 76afe4c2d73a92e05ce03fc19c25ac420234ab94
+Author: abouzek <alan.bouzek@gmail.com>
+Date:   Fri Feb 7 12:41:55 2014 -0600
+
+    change rmse to netflix_rmse and add unit test skeleton
+
+commit b4235dcc64d91f688e31b3ce35d4b78b2ddc3a83
+Author: abouzek <alan.bouzek@gmail.com>
+Date:   Fri Feb 7 12:35:49 2014 -0600
+
+    abstract file names away from functions. RMSE close to 1
+
+commit ee0c89c72ab99420e3fbc088e8c2a07431d6c303
+Author: abouzek <alan.bouzek@gmail.com>
+Date:   Fri Feb 7 12:03:12 2014 -0600
+
+    working i/o and rmse
+
+commit 6df3f217369bfe6a34fc0b699cbb92440c9b4619
+Author: abouzek <alan.bouzek@gmail.com>
+Date:   Thu Feb 6 15:24:22 2014 -0600
+
+    init
+
+commit 84a0b9c20a87b51f3ebb12c1cfa78c4076a33e7e
+Author: abouzek <alan.bouzek@gmail.com>
+Date:   Thu Feb 6 13:19:03 2014 -0800
+
+    Initial commit
