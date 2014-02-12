@@ -26,9 +26,23 @@
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-netflix_eval"><strong>netflix_eval</strong></a>(user_avgs, movie_avgs, movie_id, customer_id)</dt></dl>
- <dl><dt><a name="-netflix_print"><strong>netflix_print</strong></a>(w, num)</dt></dl>
- <dl><dt><a name="-netflix_rmse"><strong>netflix_rmse</strong></a>(a, p)</dt></dl>
- <dl><dt><a name="-netflix_solve"><strong>netflix_solve</strong></a>(r, w)</dt></dl>
+<td width="100%"><dl><dt><a name="-netflix_eval"><strong>netflix_eval</strong></a>(user_avgs, movie_avgs, movie_id, customer_id)</dt><dd><tt>netflix_eval<br>
+user_avgs&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;(customer&nbsp;id:&nbsp;customer&nbsp;avg&nbsp;rating&nbsp;for&nbsp;all&nbsp;movies)<br>
+movie_avgs&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;(movie&nbsp;id:&nbsp;movie&nbsp;avg&nbsp;rating&nbsp;for&nbsp;all&nbsp;users)<br>
+movie_id&nbsp;is&nbsp;a&nbsp;movie&nbsp;id,&nbsp;customer_id&nbsp;is&nbsp;a&nbsp;customer&nbsp;id<br>
+&nbsp;<br>
+returns&nbsp;the&nbsp;predicted&nbsp;rating&nbsp;for&nbsp;a&nbsp;particular&nbsp;movie&nbsp;id&nbsp;and&nbsp;customer&nbsp;id</tt></dd></dl>
+ <dl><dt><a name="-netflix_print"><strong>netflix_print</strong></a>(w, num)</dt><dd><tt>netflix_print<br>
+w&nbsp;is&nbsp;a&nbsp;writer,&nbsp;num&nbsp;is&nbsp;the&nbsp;object&nbsp;to&nbsp;be&nbsp;printed<br>
+&nbsp;<br>
+prints&nbsp;num&nbsp;and&nbsp;a&nbsp;newline</tt></dd></dl>
+ <dl><dt><a name="-netflix_rmse"><strong>netflix_rmse</strong></a>(a, p)</dt><dd><tt>netflix_rmse<br>
+a&nbsp;and&nbsp;p&nbsp;are&nbsp;iterables<br>
+&nbsp;<br>
+returns&nbsp;the&nbsp;RMSE&nbsp;between&nbsp;a&nbsp;and&nbsp;p</tt></dd></dl>
+ <dl><dt><a name="-netflix_solve"><strong>netflix_solve</strong></a>(r, w)</dt><dd><tt>netflix_solve<br>
+r&nbsp;is&nbsp;a&nbsp;reader,&nbsp;w&nbsp;is&nbsp;a&nbsp;writer<br>
+&nbsp;<br>
+loads&nbsp;caches,&nbsp;predicts&nbsp;ratings,&nbsp;calcs&nbsp;RMSE,&nbsp;and&nbsp;prints&nbsp;results</tt></dd></dl>
 </td></tr></table>
 </body></html>
