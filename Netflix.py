@@ -2,8 +2,9 @@
 
 import math, json
 
-def netflix_solve(r, w, user_avg_str, movie_avg_str, probe_ratings_str):
-	user_avgs, movie_avgs, probe_ratings = json.loads(user_avg_str), json.loads(movie_avg_str), json.loads(probe_ratings_str)
+def netflix_solve(r, w):
+	with open('/u/thunt/cs373-netflix-tests/irvin-user_avg.json') as user_avg_file, open('/u/thunt/cs373-netflix-tests/irvin-movie_avg.json') as movie_avg_file, open('/u/thunt/cs373-netflix-tests/timsim-probe_ans.json') as probe_ratings_file:
+		user_avgs, movie_avgs, probe_ratings = json.load(user_avg_file), json.load(movie_avg_file), json.load(probe_ratings_file)
 	a, p = [], []
 	for line in r:
 		if ':' in line:
