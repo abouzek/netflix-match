@@ -2,18 +2,9 @@
 
 import math, json
 
-def netflix_load_cache(user_avg_file, movie_avg_file):
-	with open(user_avg_file) as ua, open (movie_avg_file) as ma:
-		return json.load(ua), json.load(ma)
-
-def netflix_solve(r, w, user_avg_file, movie_avg_file, probe_ratings_file):
-	user_avgs, movie_avgs = netflix_load_cache(user_avg_file, movie_avg_file)
-
-	a = []
-	p = []
-	movie_id = 0
-	customer_id = 0
-	# Make our predictions for customers
+def netflix_solve(r, w, user_avg_str, movie_avg_str, probe_ratings_str):
+	user_avgs, movie_avgs, probe_ratings = json.loads(user_avg_str), json.loads(movie_avg_str), json.loads(probe_ratings_str)
+	a, p = [], []
 	for line in r:
 		if ':' in line:
 			movie_id = int(line[:-2])
@@ -22,30 +13,18 @@ def netflix_solve(r, w, user_avg_file, movie_avg_file, probe_ratings_file):
 			customer_id = int(line)
 			rating = netflix_eval(user_avgs, movie_avgs, movie_id, customer_id)
 			p.append(rating)
+			a.append(probe_ratings[str(movie_id)][str(customer_id)])
 			netflix_print(w, rating)
-
-	# Gather Netflix predicted ratings for comparison
-	with open(probe_ratings_file) as f:
-		for line in f:
-			if ':' not in line:
-				a.append(float(line))
-
 	netflix_print(w, "\nRMSE:" + str(netflix_rmse(a, p)))
 
 def netflix_eval(user_avgs, movie_avgs, movie_id, customer_id):
-	user_avg = user_avgs[str(customer_id)]
-	movie_avg = movie_avgs[str(movie_id)]
-	# Average of all ratings = 3.7
-	return (user_avg + movie_avg) / 2
+	user_avg = user_avgs[str(customer_id)] - 3.6
+	movie_avg = movie_avgs[str(movie_id)] - 3.6
+	return 3.6 + user_avg + movie_avg # 3.6 is (avg overall rating - .1)
 
 def netflix_print(w, num):
 	w.write(str(num) + "\n")
 
 def netflix_rmse(a, p) :
-    """
-    O(1) in space
-    O(n) in time
-    """
-    s = len(a)
     v = sum(map(lambda x, y : (x - y) ** 2, a, p), 0.0)
-    return math.sqrt(v / s)
+    return math.sqrt(v / len(a))
