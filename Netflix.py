@@ -4,7 +4,6 @@ import math, json
 
 def netflix_solve(r, w):
 	"""
-	netflix_solve
 	r is a reader, w is a writer
 
 	loads caches, predicts ratings, calcs RMSE, and prints results
@@ -26,7 +25,6 @@ def netflix_solve(r, w):
 
 def netflix_eval(user_avgs, movie_avgs, movie_id, customer_id):
 	"""
-	netflix_eval
 	user_avgs is a dictionary of (customer id: customer avg rating for all movies)
 	movie_avgs is a dictionary of (movie id: movie avg rating for all users)
 	movie_id is a movie id, customer_id is a customer id
@@ -39,7 +37,6 @@ def netflix_eval(user_avgs, movie_avgs, movie_id, customer_id):
 
 def netflix_print(w, num):
 	"""
-	netflix_print
 	w is a writer, num is the object to be printed
 
 	prints num and a newline
@@ -48,7 +45,6 @@ def netflix_print(w, num):
 
 def netflix_rmse(a, p) :
     """
-	netflix_rmse
 	a and p are iterables
 
 	returns the RMSE between a and p
