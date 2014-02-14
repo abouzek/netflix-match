@@ -8,8 +8,10 @@ def netflix_solve(r, w):
 
 	loads caches, predicts ratings, calcs RMSE, and prints results
 	"""
+	assert r and w
 	with open('/u/thunt/cs373-netflix-tests/irvin-user_avg.json') as user_avg_file, open('/u/thunt/cs373-netflix-tests/irvin-movie_avg.json') as movie_avg_file, open('/u/thunt/cs373-netflix-tests/timsim-probe_ans.json') as probe_ratings_file:
 		user_avgs, movie_avgs, probe_ratings = json.load(user_avg_file), json.load(movie_avg_file), json.load(probe_ratings_file)
+	assert user_avgs and movie_avgs and probe_ratings
 	a, p = [], []
 	for line in r:
 		if ':' in line:
@@ -31,6 +33,7 @@ def netflix_eval(user_avgs, movie_avgs, movie_id, customer_id):
 
 	returns the predicted rating for a particular movie id and customer id
 	"""
+	assert int(movie_id) > 0 and int(customer_id) > 0
 	user_avg = user_avgs[str(customer_id)] - 3.6
 	movie_avg = movie_avgs[str(movie_id)] - 3.6
 	return 3.6 + user_avg + movie_avg # 3.6 is (avg overall rating - .1)
@@ -41,6 +44,7 @@ def netflix_print(w, num):
 
 	prints num and a newline
 	"""
+	assert w
 	w.write(str(num) + "\n")
 
 def netflix_rmse(a, p) :
